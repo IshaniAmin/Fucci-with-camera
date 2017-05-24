@@ -1,0 +1,30 @@
+      
+//----------------
+      let matchesModified = matches.map(function(match, index){
+        matches[index]['league_name'] = null;
+        return matches[index];
+      });
+
+
+      return matchesModified;
+//----------------OPTION ONE (you might not need async await)
+	async
+		matchesWithLeagueName = matchesModified.map(function(match, index){
+			await fetch(`http://api.football-api.com/2.0/competitions/${match.comp_id}?Authorization=565ec012251f932ea4000001fa542ae9d994470e73fdb314a8a56d76`)
+			.then(leagueInfo => {
+				matches[index].league_name = leagueInfo.name;
+				return matches[index];
+			});
+		})
+
+//----------------OPTION TWO
+	var matches = ...;
+
+	function fetchCall(cid, matchIndex){
+		fetch(`http://api.football-api.com/2.0/competitions/${cid}?Authorization=565ec012251f932ea4000001fa542ae9d994470e73fdb314a8a56d76`)
+		.then(leagueInfo => matches[matchIndex].league_name = leagueInfo.name);
+	}
+
+	for (var i=0; i<matches.length; i++){
+		fetchCall(matches[i].comp_id, i);
+	}
