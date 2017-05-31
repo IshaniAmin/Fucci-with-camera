@@ -9,7 +9,9 @@ import Camera from 'react-native-camera';
 
 export default class CameraSnap extends Component {
   render() {
+
     return (
+
       <View style={styles.container}>
         <Camera
           ref={(cam) => {
@@ -20,7 +22,9 @@ export default class CameraSnap extends Component {
           <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
         </Camera>
       </View>
+      
     );
+
   }
 
   takePicture() {
