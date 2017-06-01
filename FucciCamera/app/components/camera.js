@@ -28,13 +28,13 @@ export default class CameraSnap extends Component {
   }
 
   takePicture() {
-    // const options = {};
-    // //options.location = ...
-    // this.camera.capture({metadata: options})
-    //   .then((data) => console.log(data))
-    //   .catch(err => console.error(err));
+    const options = {};
+    //options.location = ...
+    this.camera.capture({metadata: options})
+      .then((data) => console.log(data))
+      .catch(err => console.error(err));
 
-    alert("picture button works");
+    console.log("picture button works");
   }
 }
 
